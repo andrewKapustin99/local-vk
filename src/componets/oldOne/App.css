@@ -1,0 +1,119 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.logo{
+    max-width: 100%;
+    width: 60px;
+    height: auto;
+}
+
+.header__container{
+    width: 960px;
+    max-width: 100%;
+    padding: 10px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.info__wrapp{
+    display: flex;
+    justify-content: space-around;
+    font-size: 2rem;
+}
+
+.header__logo{
+    flex-grow: 2;
+}
+
+
+
+
+
+.header__info{
+    flex-grow: 6;
+}
+
+
+
+
+.header__settings{
+    flex-grow: 2;
+    position: relative;
+}
+
+.settings__wrap{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+.setting__name{
+    margin-right: 10px;
+    font-weight: 500;
+}
+.setting__name h5{
+    font-size: 1rem;
+}
+.setting__photo img {
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+}
+.setting__arrow{
+    transition: all 0.5s ease-in-out;
+    margin: 0 7px;
+}
+
+
+.drop_menu{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    min-width: 206px;
+    max-width: 230px;
+    width: auto;
+    border: 1px solid #aeb5be;
+    background-color: white;
+    border-radius: 5px;
+
+    right: 0;
+    top: 60px;
+}
+
+.line{
+    margin: 4px 13px;
+    border-top: 1px solid
+}
+.drop_menu a{
+    height: 30px;
+    line-height: 30px;
+    padding: 0 15px;
+    color: black;
+    text-decoration: none;
+}
+
+.drop_menu span{
+    padding: 8px 15px;
+    text-transform: uppercase;
+    color: #aeb5be;
+}
+
+
+section{
+    background-color: #aeb5be;
+    height: 500px;
+}
+
+
+.arrow_up{
+    transform: rotate(180deg); 
+}
+.hide{
+    display: none;
+}

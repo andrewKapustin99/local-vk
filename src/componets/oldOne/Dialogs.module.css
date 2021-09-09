@@ -1,0 +1,51 @@
+.dialogs{
+    display: flex;
+}
+
+.dialogItems {
+    flex-grow: 1;
+}
+
+.userPhoto img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+
+
+.messagesWrapper {
+    flex-grow: 3;
+    border-left: 3px solid #efeef0;
+
+}
+
+.statusInfo {
+    display: flex;
+    padding: 15px 20px;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 3px solid #efeef0;
+}
+
+.info h5{
+    display: inline;
+    font-size: 14px;
+    font-weight: bold;
+}
+.info span {
+    margin-left: 10px;
+    font-size: 13px;
+}
+ 
+.statusInfo img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.info{
+    
+}

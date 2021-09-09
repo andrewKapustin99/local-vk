@@ -1,0 +1,50 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.app-wrapper{
+    display: grid;
+
+    grid-template-areas: 
+    "app-header app-header app-header"
+    "app-navbar app-content app-content";
+
+    grid-template-rows: 60px 1fr;
+    grid-template-columns: 2fr 10fr;
+    grid-gap: 10px;
+
+    width: 960px;
+    margin: 0 auto;
+}
+
+.app-wrapper-contnent {
+    border-radius: 5px;
+    grid-area: app-content;
+    background-color: white;
+}
+
+
+
+
+/* @media(max-width:400px) {
+    .app-wrapper{
+        grid-template-areas: 
+        "app-header"
+        "app-content"
+        "app-navbar ";
+
+        grid-template-rows: 60px 1fr 60px;
+        grid-template-columns:1fr;
+    }
+} */
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,82 @@
+.dialogs{
+    display: flex;
+}
+
+.dialogsItem {
+    flex-grow: 1;
+    border-right: 2px solid #efeef0;
+    /* padding: 10px; */
+}
+
+.dialogs a {
+    display: block;
+    text-decoration: none;
+    color: black;
+    padding: 20px 10px;
+}
+
+.dialogs a:hover{
+    background-color: #f6f6f6;
+}
+
+.dialogsItem .dialog {
+    display: flex;
+}
+
+.DialogItemPhoto {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.dialogItemInfo {
+    margin-left: 20px;
+}
+
+.massagesBlock {
+    flex-grow: 3;
+}
+
+.massagesBlockWrapp {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.messageHeader {
+    flex-grow: 1;
+    border-bottom: 2px solid #efeef0;
+}
+.messageBody {
+    flex-grow: 6;
+    border-bottom: 2px solid #efeef0;
+}
+.writeMessage {
+    flex-grow: 1;
+    margin: 0 20px;
+}
+
+.writeMessageWrapp {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+.writeMessageWrapp textarea {
+    flex-grow: 7;
+}
+.sendBtn {
+    flex-grow: 1;
+    cursor: pointer;
+    position:relative;
+    z-index:50;
+}
+.sendBtn::before {
+    position:absolute;
+    content:'';
+    top:-10px;
+    right:-10px;
+    left:-10px;
+    bottom:-10px;
+    z-index:40;
+}

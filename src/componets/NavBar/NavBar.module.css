@@ -1,0 +1,36 @@
+/* NAV-BAR */
+
+.app-navbar{
+    grid-area: app-navbar;
+    background-color: #4e514e;
+    height: fit-content;
+}
+
+.app-navbar ul {
+    text-decoration: none;
+    list-style: none;
+    color: white;
+}
+
+.nav__list li {
+}   
+
+.item {
+    display: block;
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    padding: 20px;
+}
+
+.item:hover {
+    background-color: #808080;
+}
+
+.side_bar__icone {
+    margin-right: 10px;
+}
+
+.activeLink {
+    background-color: #07c19e;
+}

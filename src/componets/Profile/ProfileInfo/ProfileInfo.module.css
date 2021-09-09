@@ -1,0 +1,11 @@
+/* CONTENT */
+
+.front-layout{
+    height: 200px;
+    overflow: hidden;
+}
+
+
+.front-layout img {
+    width: 100%;
+}
