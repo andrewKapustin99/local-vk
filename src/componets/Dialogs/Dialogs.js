@@ -4,7 +4,7 @@ import DialogItem from './DialogItem/DialogItem'
 import Message from './Message/Message'
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { sendMessageActionCreator, uppdateNewMessageActionCreator } from '../../redux/state';
+import { sendMessageActionCreator, uppdateNewMessageActionCreator } from '../../redux/dialogs-reducer';
 
 const Dialogs = (props) => {
 
@@ -22,6 +22,7 @@ const Dialogs = (props) => {
         props.dispatch(sendMessageActionCreator())
     }
     let onMessageChange = (e) => {
+        
         let text = e.target.value
         props.dispatch(uppdateNewMessageActionCreator(text))
     }
