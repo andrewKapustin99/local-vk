@@ -15,7 +15,8 @@
     grid-template-columns: 2fr 10fr;
     grid-gap: 10px;
 
-    width: 960px;
+    /* width: 960px; */
+    width: 1076px;
     margin: 0 auto;
 }
 

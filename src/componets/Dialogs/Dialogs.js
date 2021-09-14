@@ -4,26 +4,26 @@ import DialogItem from './DialogItem/DialogItem'
 import Message from './Message/Message'
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { sendMessageActionCreator, uppdateNewMessageActionCreator } from '../../redux/state';
 
 const Dialogs = (props) => {
 
-    let dialogElements = props.state.dialogs.map((d) => {
+    let state = props.store.getState().messagesPage;
+    
+    let dialogElements = state.dialogs.map((d) => {
         return <DialogItem key={d.id} name={d.name} id={d.id} photo={d.photo} />
     });
-    let messageElements = props.state.messages.map((m) => {
+    let messageElements = state.messages.map((m) => {
         return <Message key={m.id} message={m.message} />
     })
 
 
-
-
-    let newMessageElement = React.createRef();
-    let addMessage = () => {
-        props.addMessage();
+    let onSendMessageClick = () => {
+        props.dispatch(sendMessageActionCreator())
     }
-    let onMessageChange = () => {
-        let text = newMessageElement.current.value;
-        props.updateNewMessage(text);
+    let onMessageChange = (e) => {
+        let text = e.target.value
+        props.dispatch(uppdateNewMessageActionCreator(text))
     }
 
     return (
@@ -45,9 +45,13 @@ const Dialogs = (props) => {
 
                     <div className={classes.writeMessage}>
                         <div className={classes.writeMessageWrapp}>
-                            <textarea onChange={onMessageChange} ref={newMessageElement} value={props.state.newMessageText} />
-                            {/* <button onClick={addMessage} >Отправить</button> */}
-                            <FontAwesomeIcon icon={faPaperPlane} className={classes.sendBtn} onClick={addMessage} />
+                            <textarea 
+                                placeholder={'Введите новое сообщение'} 
+                                onChange={ onMessageChange } 
+                                value={props.state.newMessageText} 
+                            />
+                            <button onClick={ onSendMessageClick }>Отправить</button>
+                            {/* <FontAwesomeIcon icon={faPaperPlane} className={classes.sendBtn} onClick={addMessage} /> */}
                         </div>
                     </div>
                 </div>
@@ -55,6 +59,7 @@ const Dialogs = (props) => {
             </div>
         </div>
     )
+
 }
 
 export default Dialogs;

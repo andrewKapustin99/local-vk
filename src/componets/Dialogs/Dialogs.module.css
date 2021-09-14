@@ -1,5 +1,6 @@
 .dialogs{
     display: flex;
+    min-height: 850px;
 }
 
 .dialogsItem {
@@ -45,15 +46,18 @@
 }
 
 .messageHeader {
-    flex-grow: 1;
+    height: 50px;
+    /* flex-grow: 1; */
     border-bottom: 2px solid #efeef0;
 }
 .messageBody {
-    flex-grow: 6;
+    /* flex-grow: 6; */
+    height: 750px;
     border-bottom: 2px solid #efeef0;
 }
 .writeMessage {
-    flex-grow: 1;
+    height: 50px;
+    /* flex-grow: 1; */
     margin: 0 20px;
 }
 
@@ -64,6 +68,10 @@
 }
 .writeMessageWrapp textarea {
     flex-grow: 7;
+    resize: none;
+    min-height: 36px;
+    max-height: 200px;
+    overflow-y: auto;
 }
 .sendBtn {
     flex-grow: 1;
@@ -71,7 +79,7 @@
     position:relative;
     z-index:50;
 }
-.sendBtn::before {
+/* .sendBtn::before {
     position:absolute;
     content:'';
     top:-10px;
@@ -79,4 +87,4 @@
     left:-10px;
     bottom:-10px;
     z-index:40;
-}
+} */
