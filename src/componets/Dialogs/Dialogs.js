@@ -4,27 +4,23 @@ import DialogItem from './DialogItem/DialogItem'
 import Message from './Message/Message'
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { sendMessageActionCreator, uppdateNewMessageActionCreator } from '../../redux/dialogs-reducer';
 
 const Dialogs = (props) => {
-
-    let state = props.store.getState().messagesPage;
     
-    let dialogElements = state.dialogs.map((d) => {
+    let dialogElements = props.messagesPage.dialogs.map((d) => {
         return <DialogItem key={d.id} name={d.name} id={d.id} photo={d.photo} />
     });
-    let messageElements = state.messages.map((m) => {
+    let messageElements = props.messagesPage.messages.map((m) => {
         return <Message key={m.id} message={m.message} />
     })
 
 
     let onSendMessageClick = () => {
-        props.dispatch(sendMessageActionCreator())
+        props.sendMessage()
     }
     let onMessageChange = (e) => {
-        
         let text = e.target.value
-        props.dispatch(uppdateNewMessageActionCreator(text))
+        props.uppdateNewMessageText(text)
     }
 
     return (
@@ -49,7 +45,7 @@ const Dialogs = (props) => {
                             <textarea 
                                 placeholder={'Введите новое сообщение'} 
                                 onChange={ onMessageChange } 
-                                value={props.state.newMessageText} 
+                                value={props.messagesPage.newMessageText} 
                             />
                             <button onClick={ onSendMessageClick }>Отправить</button>
                             {/* <FontAwesomeIcon icon={faPaperPlane} className={classes.sendBtn} onClick={addMessage} /> */}

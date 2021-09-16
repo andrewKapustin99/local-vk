@@ -1,7 +1,17 @@
 const ADD_POST = 'ADD-POST'
 const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT"
 
-const profileReducer = (state, action) => {
+let initialState =  {
+    posts: [
+        { id: 1, postContent: "Waht's up!!!", likesCount: 2 },
+        { id: 2, postContent: "It's my first post", likesCount: 5 },
+        { id: 3, postContent: "Just a prank bro", likesCount: 4 },
+        { id: 4, postContent: "I LOVE IT", likesCount: 78 },
+    ],
+    newPostText: 'local-vk.com'
+}
+
+const profileReducer = (state = initialState, action) => {
 
     switch (action.type) {
         case ADD_POST : 

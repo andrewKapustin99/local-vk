@@ -42,7 +42,6 @@ let store = {
     },
 
     dispatch(action) {
-
         this._state.profilePage = profileReducer(this._state.profilePage, action);
         this._state.messagesPage = dialogReducer(this._state.messagesPage, action);
 

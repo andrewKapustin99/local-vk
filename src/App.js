@@ -8,9 +8,11 @@ import News from './componets/News/News';
 import Music from './componets/Music/Music';
 import Settings from './componets/Settings/Settings';
 
-import Dialogs from './componets/Dialogs/Dialogs';
+// import Dialogs from './componets/Dialogs/Dialogs';
+import DialogsContainer from './componets/Dialogs/DialogsContainer';
+
 import { Route } from 'react-router-dom';
-import store from './redux/state';
+import store from './redux/store';
 
 
 function App(props) {
@@ -22,16 +24,13 @@ function App(props) {
 
                     <Route path="/profile" 
                         render={() => <Profile 
-                            state={props.state.profilePage} 
-                            dispatch={props.dispatch}
+                            store={props.store}
                         />} 
                     />
 
                     <Route path="/dialogs" 
-                        render={() => <Dialogs 
+                        render={() => <DialogsContainer 
                             store = {props.store}
-                            state={props.state.messagesPage} 
-                            dispatch={props.dispatch}
                         />} 
                     />
 
