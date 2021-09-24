@@ -6,6 +6,7 @@ import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Dialogs = (props) => {
+
     
     let dialogElements = props.messagesPage.dialogs.map((d) => {
         return <DialogItem key={d.id} name={d.name} id={d.id} photo={d.photo} />

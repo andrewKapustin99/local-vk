@@ -1,7 +1,7 @@
 const ADD_POST = 'ADD-POST'
 const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT"
 
-let initialState =  {
+let initialState = {
     posts: [
         { id: 1, postContent: "Waht's up!!!", likesCount: 2 },
         { id: 2, postContent: "It's my first post", likesCount: 5 },
@@ -11,32 +11,39 @@ let initialState =  {
     newPostText: 'local-vk.com'
 }
 
+let createUniqId = () => {
+    return '_' + Math.random().toString(36).substr(2, 9);
+}
+
 const profileReducer = (state = initialState, action) => {
 
     switch (action.type) {
-        case ADD_POST : 
+        case ADD_POST: 
+            let postContentBody = state.newPostText;
             let newPost = {
-                id: 5,
-                postContent: state.newPostText,
+                // id: 5,
+                id: createUniqId(),
+                postContent: postContentBody,
                 likesCount: 0
             };
-            if (state.newPostText) {
-                state.posts.push(newPost);
-            } else {
-                alert('write more symbols')
+            return {
+                ...state,
+                newPostText: '',
+                posts: [...state.posts, newPost]
             }
-            state.newPostText = '';
-            return state;
         case UPDATE_NEW_POST_TEXT: 
-            state.newPostText = action.newText;
-            return state;
+            return {
+                ...state,
+                newPostText: action.newText
+            }
         default:
             return state;
     }
 }
 
 
-export const addPostActionCreator = () => ( {type: ADD_POST} )
+export const addPostActionCreator = () => ({ type: ADD_POST })
+
 export const updateNewPostTextActionCreator = (text) => ({
     type: UPDATE_NEW_POST_TEXT,
     newText: text

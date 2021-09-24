@@ -7,12 +7,10 @@ import Profile from './componets/Profile/Profile';
 import News from './componets/News/News';
 import Music from './componets/Music/Music';
 import Settings from './componets/Settings/Settings';
-
-// import Dialogs from './componets/Dialogs/Dialogs';
 import DialogsContainer from './componets/Dialogs/DialogsContainer';
+import UsersContainer from './componets/Users/UsersContainer';
 
 import { Route } from 'react-router-dom';
-import store from './redux/store';
 
 
 function App(props) {
@@ -22,21 +20,19 @@ function App(props) {
                 <Navbar />
                 <div className="app-wrapper-contnent">
 
+                    {/* Route - компонента которая следит за URL в браузере и в случае совпаденрия вызывает метот render */}
                     <Route path="/profile" 
-                        render={() => <Profile 
-                            store={props.store}
-                        />} 
+                        render={() => <Profile />} 
                     />
 
                     <Route path="/dialogs" 
-                        render={() => <DialogsContainer 
-                            store = {props.store}
-                        />} 
+                        render={() => <DialogsContainer />} 
                     />
 
                     <Route path="/news" component={News} />
                     <Route path="/music" component={Music} />
                     <Route path="/settings" component={Settings} />
+                    <Route path="/users" render={() => <UsersContainer/> } />
                 </div>
             </div>
     );

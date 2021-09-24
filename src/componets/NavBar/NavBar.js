@@ -1,7 +1,7 @@
 import React from "react";
 import classes from './NavBar.module.css';
 
-import { faHome, faUser, faEnvelope, faNewspaper, faMusic, faCog } from "@fortawesome/free-solid-svg-icons";
+import { faHome, faUser, faEnvelope, faNewspaper, faMusic, faCog, faUsers } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { NavLink } from "react-router-dom";
 
@@ -16,6 +16,12 @@ const Navbar = () => {
                     <NavLink to="/profile"  activeClassName={classes.activeLink} className={classes.item}>
                         <FontAwesomeIcon icon={faUser} className={classes.side_bar__icone} />
                         <span>Profile</span>
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink to="/users" className={classes.item} activeClassName={classes.activeLink}>
+                        <FontAwesomeIcon icon={faUsers} className={classes.side_bar__icone} />
+                        <span>Friends</span>
                     </NavLink>
                 </li>
                 <li>
