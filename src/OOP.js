@@ -53,3 +53,8 @@ let store = {
 let state = store.getState();
 state.setFirstName('samurai-JS.com');
 state.getState();
+
+
+
+// 
+

@@ -61,3 +61,8 @@ img {
 .unfollow:hover{
     background-color: #c01a1a;
 }
+
+
+.selectedPage {
+    font-weight: bold;
+}
