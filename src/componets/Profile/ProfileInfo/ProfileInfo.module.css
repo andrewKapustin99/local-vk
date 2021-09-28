@@ -9,3 +9,67 @@
 .front-layout img {
     width: 100%;
 }
+
+.profile_info_wrap {
+    display: flex;
+    border-bottom: 15px solid #efeef0;
+
+}
+
+.img_wrap {
+    /* flex-basis: 300px; */
+    flex: 0 0 auto;
+    width: 300px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
+.img_wrap img {
+    width: 250px;
+    height: 250px;
+    display: block;
+    margin: 0 auto;
+    border-radius: 5px;
+}
+
+.info_wrap {
+    flex: 100%;
+    border-left: 15px solid #efeef0;
+    padding: 25px;
+}
+
+
+.infoItem {
+    border-bottom: 1px solid #dce1e6;
+    padding-bottom: 15px;
+}
+
+.infoJob {
+    padding-top: 10px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #dce1e6;
+}
+
+.socialNet {
+    padding-top: 10px;
+
+}
+
+
+.logo_wrap a{
+    text-align: center;
+    width: 50px;
+    height: 50px;
+    float: left;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.15), inset 0 0 50px rgba(0,0,0,0.1);
+    border-radius: 24px;
+    margin: 0 10px 10px 0;
+    padding: 6px;
+    background: #3B5998;
+    color: white;
+}
+
+
+.logoIcon{
+    font-size: 30px
+}

@@ -3,7 +3,6 @@ import './App.css';
 
 import Header from './componets/Header/Header';
 import Navbar from './componets/NavBar/NavBar';
-import Profile from './componets/Profile/Profile';
 import News from './componets/News/News';
 import Music from './componets/Music/Music';
 import Settings from './componets/Settings/Settings';
@@ -11,6 +10,7 @@ import DialogsContainer from './componets/Dialogs/DialogsContainer';
 import UsersContainer from './componets/Users/UsersContainer';
 
 import { Route } from 'react-router-dom';
+import ProfileContainer from './componets/Profile/ProfileContainer';
 
 
 function App(props) {
@@ -22,7 +22,7 @@ function App(props) {
 
                     {/* Route - компонента которая следит за URL в браузере и в случае совпаденрия вызывает метот render */}
                     <Route path="/profile" 
-                        render={() => <Profile />} 
+                        render={() => <ProfileContainer />} 
                     />
 
                     <Route path="/dialogs" 

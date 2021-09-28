@@ -1,14 +1,22 @@
+import { connect } from "react-redux"
+
 const ADD_POST = 'ADD-POST'
 const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT"
+const SET_USER_PROFILE = 'SET-USER-PROFILE'
+const LIKE_POST = 'LIKE-POST'
+const REMOVE_LIKE_POST = 'REMOVE-LIKE-POST'
 
 let initialState = {
-    posts: [
-        { id: 1, postContent: "Waht's up!!!", likesCount: 2 },
-        { id: 2, postContent: "It's my first post", likesCount: 5 },
-        { id: 3, postContent: "Just a prank bro", likesCount: 4 },
-        { id: 4, postContent: "I LOVE IT", likesCount: 78 },
-    ],
-    newPostText: 'local-vk.com'
+    // posts: [
+    //     { id: 1, postContent: "Waht's up!!!", likesCount: 2 },
+    //     { id: 2, postContent: "It's my first post", likesCount: 5 },
+    //     { id: 3, postContent: "Just a prank bro", likesCount: 4 },
+    //     { id: 4, postContent: "I LOVE IT", likesCount: 78 },
+    // ],
+    // initialValue: 'local-vk.com'
+    posts: [],
+    newPostText: 'local-vk.com',
+    profile: null
 }
 
 let createUniqId = () => {
@@ -36,17 +44,21 @@ const profileReducer = (state = initialState, action) => {
                 ...state,
                 newPostText: action.newText
             }
+        case SET_USER_PROFILE:
+            return {
+                ...state,
+                profile: action.profile
+            }
         default:
             return state;
     }
 }
 
 
-export const addPostActionCreator = () => ({ type: ADD_POST })
+export const addPostAC = () => ({ type: ADD_POST })
 
-export const updateNewPostTextActionCreator = (text) => ({
-    type: UPDATE_NEW_POST_TEXT,
-    newText: text
-})
+export const updateNewPostTextAC = (text) => ({ type: UPDATE_NEW_POST_TEXT, newText: text })
+
+export const setUserProfileAC = (profile) => ({ type: SET_USER_PROFILE, profile }) 
 
 export default profileReducer
