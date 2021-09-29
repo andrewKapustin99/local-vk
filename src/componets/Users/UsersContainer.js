@@ -1,11 +1,10 @@
 // JSX не работает без импорта reacr 
 import React from "react";
-import * as axios from "axios";
 import Users from "./Users";
 import { connect } from 'react-redux';
-import { follow, setUsers, unfollow, setCurrentPage, setTotalUsersCount, toggleIsFetching } from "../../redux/Users-reducer";
+import { follow, setUsers, unfollow, setCurrentPage, setTotalUsersCount, toggleIsFetching, toggleFollowingProgress } from "../../redux/Users-reducer";
 import Preloader from "../Common/Preloader/Preloader";
-import { getUsers } from "../../api/api";
+import { usersAPI } from "../../api/users-api";
 
 // Container -> Class -> Preaent.Comp
 
@@ -15,8 +14,8 @@ class UsersContainer extends React.Component {
 
     componentDidMount() {
         this.props.toggleIsFetching(true);
-
-        getUsers(this.props.currentPage, this.props.pageSize).then(data => {
+        
+        usersAPI.getUsers(this.props.currentPage, this.props.pageSize).then(data => {
                 this.props.toggleIsFetching(false)
                 this.props.setUsers(data.items)
                 this.props.setTotalUsersCount(data.totalCount)
@@ -27,13 +26,14 @@ class UsersContainer extends React.Component {
     onPageChanged = (pageNumber) => {
         this.props.toggleIsFetching(true)
         this.props.setCurrentPage(pageNumber);
-        getUsers(pageNumber, this.props.pageSize).then(data => {
+        usersAPI.getUsers(pageNumber, this.props.pageSize).then(data => {
                 this.props.toggleIsFetching(false)
                 this.props.setUsers(data.items)
             })
     }
 
     render() {
+        console.log(this.props);
         return <>
             { this.props.isFetching ? <Preloader/> : null }
             <Users
@@ -44,6 +44,8 @@ class UsersContainer extends React.Component {
                 onPageChanged={this.onPageChanged}
                 unfollow={this.props.unfollow}
                 follow={this.props.follow}
+                toggleFollowingProgress={this.props.toggleFollowingProgress}
+                followingInProgress={this.props.followingInProgress}
                 // isFetching={this.props.isFetching}
             />
         </>
@@ -59,7 +61,8 @@ let mapStateToProps = (state) => {
         pageSize: state.usersPage.pageSize,
         totalUsersCount: state.usersPage.totalUsersCount,
         currentPage: state.usersPage.currentPage,
-        isFetching: state.usersPage.isFetching
+        isFetching: state.usersPage.isFetching,
+        followingInProgress: state.usersPage.followingInProgress
     }
 }
 
@@ -70,7 +73,8 @@ let dispatchToProps = {
     setUsers,
     setCurrentPage,
     setTotalUsersCount,
-    toggleIsFetching
+    toggleIsFetching,
+    toggleFollowingProgress
 }
 
 export default connect(mapStateToProps, dispatchToProps)(UsersContainer)

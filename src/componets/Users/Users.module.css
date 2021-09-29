@@ -33,7 +33,7 @@ img {
 .info_wrap{
 }
 
-.wrap_padding button {
+/* .wrap_padding button {
     margin-top: 10px;
     height: 36px;
     width: 100%;
@@ -44,7 +44,7 @@ img {
 }
 .wrap_padding button:hover{
     cursor: pointer;
-}
+} */
 
 .follow{
     background-color: #07c19e;
