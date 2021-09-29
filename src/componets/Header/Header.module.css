@@ -17,3 +17,13 @@
     width: 50px;
     height: auto;
 }
+
+.loginBlock {
+    float: right;
+    color: white;
+
+}
+.loginBlock a {
+    color: white;
+    text-decoration: none;
+}

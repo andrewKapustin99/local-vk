@@ -1,7 +1,6 @@
 import React from 'react';
 import './App.css';
 
-import Header from './componets/Header/Header';
 import Navbar from './componets/NavBar/NavBar';
 import News from './componets/News/News';
 import Music from './componets/Music/Music';
@@ -11,17 +10,19 @@ import UsersContainer from './componets/Users/UsersContainer';
 
 import { Route } from 'react-router-dom';
 import ProfileContainer from './componets/Profile/ProfileContainer';
+import HeaderContainer from './componets/Header/HeaderContainer';
 
 
 function App(props) {
     return (
             <div className="app-wrapper ">
-                <Header />
+                <HeaderContainer />
                 <Navbar />
                 <div className="app-wrapper-contnent">
 
                     {/* Route - компонента которая следит за URL в браузере и в случае совпаденрия вызывает метот render */}
-                    <Route path="/profile" 
+                    {/* path/:param_Name */}
+                    <Route path="/profile/:userId?" 
                         render={() => <ProfileContainer />} 
                     />
 
