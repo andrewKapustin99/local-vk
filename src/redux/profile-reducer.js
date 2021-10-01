@@ -1,17 +1,10 @@
+import { profileAPI } from "../api/profile-api";
+
 const ADD_POST = 'ADD-POST'
 const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT"
 const SET_USER_PROFILE = 'SET-USER-PROFILE'
-const LIKE_POST = 'LIKE-POST'
-const REMOVE_LIKE_POST = 'REMOVE-LIKE-POST'
 
 let initialState = {
-    // posts: [
-    //     { id: 1, postContent: "Waht's up!!!", likesCount: 2 },
-    //     { id: 2, postContent: "It's my first post", likesCount: 5 },
-    //     { id: 3, postContent: "Just a prank bro", likesCount: 4 },
-    //     { id: 4, postContent: "I LOVE IT", likesCount: 78 },
-    // ],
-    // initialValue: 'local-vk.com'
     posts: [],
     newPostText: 'local-vk.com',
     profile: null
@@ -53,10 +46,18 @@ const profileReducer = (state = initialState, action) => {
 }
 
 
-export const addPostAC = () => ({ type: ADD_POST })
+export const addPost = () => ({ type: ADD_POST })
 
-export const updateNewPostTextAC = (text) => ({ type: UPDATE_NEW_POST_TEXT, newText: text })
+export const updateNewPostText = (text) => ({ type: UPDATE_NEW_POST_TEXT, newText: text })
 
-export const setUserProfileAC = (profile) => ({ type: SET_USER_PROFILE, profile }) 
+export const setUserProfile = (profile) => ({ type: SET_USER_PROFILE, profile }) 
+
+export const getProfile = (userId) => {
+    return (dispatch) => {
+        profileAPI.getProfile(userId).then(response => {
+            dispatch(setUserProfile(response.data))
+        })
+    }
+}
 
 export default profileReducer

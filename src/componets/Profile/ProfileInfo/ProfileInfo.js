@@ -7,8 +7,7 @@ import { faFacebookF } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const ProfileInfo = (props) => {
-    // console.log(props);
-
+    
     if(!props.profile) {
         return <Preloader/>
     } else {

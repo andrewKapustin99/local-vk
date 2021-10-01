@@ -1,7 +1,4 @@
-import * as axios from "axios";
 import { instance } from "./api";
-
-
 
 export const usersAPI = {
     getUsers (currentPage = 1, pageSize = 10) {
