@@ -1,29 +1,20 @@
 import React from 'react';
 import Dialogs from './Dialogs';
-import { sendMessageActionCreator, uppdateNewMessageActionCreator } from '../../redux/dialogs-reducer';
+import { sendMessage, uppdateNewMessage } from '../../redux/dialogs-reducer';
 import { connect } from 'react-redux';
+import { withAuthRedirect } from '../../hoc/withAuthRedirect';
+import { compose } from 'redux';
 
-// данные из state
+
+// данные из state 
 let mapStateToProps = (state) => {
     return {
         messagesPage: state.messagesPage
     }
 }
-// callbak для отправки 
-let masDispatchToProps = (dispatch) => {
-    return {
-        uppdateNewMessageText: (text) => {
-            let action = uppdateNewMessageActionCreator(text)
-            dispatch(action)
-        },
-        sendMessage: () => {
-            dispatch(sendMessageActionCreator())
-        }
-    }
-
-}
-
-// компонента Dialogs перерисуется если в messagesPage: state.messagesPage будет новый объект
-const DialogsContainer = connect(mapStateToProps, masDispatchToProps)(Dialogs)
-
-export default DialogsContainer;
+// 1) Компанента Dialogs попадает как аргементв в функцию withAuthRedirect
+// 2) результат 1 действия поместить ка крагемент в функцию connect(mapStateToProps, masDispatchToProps)
+export default compose(
+    connect(mapStateToProps, { uppdateNewMessage, sendMessage }),
+    withAuthRedirect
+)(Dialogs);

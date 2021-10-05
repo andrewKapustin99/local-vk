@@ -4,6 +4,7 @@ import DialogItem from './DialogItem/DialogItem'
 import Message from './Message/Message'
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Redirect } from 'react-router';
 
 const Dialogs = (props) => {
 
@@ -21,8 +22,10 @@ const Dialogs = (props) => {
     }
     let onMessageChange = (e) => {
         let text = e.target.value
-        props.uppdateNewMessageText(text)
+        props.uppdateNewMessage(text)
     }
+
+    if(!props.isAuth) return <Redirect to={'/login'} />
 
     return (
         <div className={classes.dialogs}>

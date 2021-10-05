@@ -5,8 +5,10 @@ import basicPhoto from '../../../assets/images/user.png'
 import { NavLink } from "react-router-dom"
 import { faFacebookF } from '@fortawesome/free-brands-svg-icons' 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import ProfileStaus from './ProfileStatus'
 
 const ProfileInfo = (props) => {
+    
     
     if(!props.profile) {
         return <Preloader/>
@@ -27,7 +29,8 @@ const ProfileInfo = (props) => {
                     <div className={classes.info_wrap}>
                         <div className={classes.infoItem}>
                             <h3>{props.profile.fullName}</h3>
-                            <span>{props.profile.aboutMe}</span>
+                            <ProfileStaus status={props.status} />
+                            {/* <span>{props.profile.aboutMe}</span> */}
                         </div>
 
                         { props.profile.lookingForAJob ? <div className={classes.infoJob}>
