@@ -29,7 +29,7 @@ const ProfileInfo = (props) => {
                     <div className={classes.info_wrap}>
                         <div className={classes.infoItem}>
                             <h3>{props.profile.fullName}</h3>
-                            <ProfileStaus status={props.status} />
+                            <ProfileStaus status={props.status} updateStatus={props.updateStatus} />
                             {/* <span>{props.profile.aboutMe}</span> */}
                         </div>
 
