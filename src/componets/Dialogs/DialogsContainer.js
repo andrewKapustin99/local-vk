@@ -12,6 +12,7 @@ let mapStateToProps = (state) => {
         messagesPage: state.messagesPage
     }
 }
+
 // 1) Компанента Dialogs попадает как аргементв в функцию withAuthRedirect
 // 2) результат 1 действия поместить ка крагемент в функцию connect(mapStateToProps, masDispatchToProps)
 export default compose(

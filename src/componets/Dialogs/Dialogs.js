@@ -5,10 +5,33 @@ import Message from './Message/Message'
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Redirect } from 'react-router';
+import { Field, reduxForm } from 'redux-form'
+
+const AddMessageForm = (props) => {
+    return (
+        <form onSubmit={props.handleSubmit} className={classes.writeMessage}>
+            <div className={classes.writeMessageWrapp}>
+                <div>
+                    <Field
+                        component={'textarea'}
+                        name={'newMessageBody'}
+                        placeholder={'Введите новое сообщение'}
+                    />
+                </div>
+
+                <div>
+                    <button>Отправить</button>
+                </div>
+
+            </div>
+        </form>
+    )
+}
+
+const AddMessageReduxForm = reduxForm({ form: 'dialogAddMessageForm' })(AddMessageForm)
 
 const Dialogs = (props) => {
 
-    
     let dialogElements = props.messagesPage.dialogs.map((d) => {
         return <DialogItem key={d.id} name={d.name} id={d.id} photo={d.photo} />
     });
@@ -25,7 +48,11 @@ const Dialogs = (props) => {
         props.uppdateNewMessage(text)
     }
 
-    if(!props.isAuth) return <Redirect to={'/login'} />
+    let addNewMessage = (formData) => {
+        props.sendMessage(formData.newMessageBody)
+    }
+
+    if (!props.isAuth) return <Redirect to={'/login'} />
 
     return (
         <div className={classes.dialogs}>
@@ -46,13 +73,7 @@ const Dialogs = (props) => {
 
                     <div className={classes.writeMessage}>
                         <div className={classes.writeMessageWrapp}>
-                            <textarea 
-                                placeholder={'Введите новое сообщение'} 
-                                onChange={ onMessageChange } 
-                                value={props.messagesPage.newMessageText} 
-                            />
-                            <button onClick={ onSendMessageClick }>Отправить</button>
-                            {/* <FontAwesomeIcon icon={faPaperPlane} className={classes.sendBtn} onClick={addMessage} /> */}
+                            <AddMessageReduxForm onSubmit={addNewMessage} />
                         </div>
                     </div>
                 </div>
