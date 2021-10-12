@@ -3,7 +3,6 @@ import classes from './Post.module.css'
 import userPhoto from '../../../../assets/images/Wa4vBSHaZI4(1).jpg'
 
 const Post = (props) => {
-    console.log(props);
     return (
         <div className={classes.item}>
             {/*  */}

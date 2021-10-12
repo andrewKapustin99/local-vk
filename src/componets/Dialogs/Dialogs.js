@@ -6,6 +6,11 @@ import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Redirect } from 'react-router';
 import { Field, reduxForm } from 'redux-form'
+import { Textarea } from '../Common/FormsControls/FormsControls';
+import { maxLengthCreator, requiredField } from "../../utils/validators/validators"
+
+
+const maxLength1000 = maxLengthCreator(1000)
 
 const AddMessageForm = (props) => {
     return (
@@ -13,9 +18,10 @@ const AddMessageForm = (props) => {
             <div className={classes.writeMessageWrapp}>
                 <div>
                     <Field
-                        component={'textarea'}
+                        component = {Textarea} 
                         name={'newMessageBody'}
                         placeholder={'Введите новое сообщение'}
+                        validate={[requiredField, maxLength1000]}
                     />
                 </div>
 
@@ -37,19 +43,10 @@ const Dialogs = (props) => {
     });
     let messageElements = props.messagesPage.messages.map((m) => {
         return <Message key={m.id} message={m.message} />
-    })
+    });
 
-
-    let onSendMessageClick = () => {
-        props.sendMessage()
-    }
-    let onMessageChange = (e) => {
-        let text = e.target.value
-        props.uppdateNewMessage(text)
-    }
-
-    let addNewMessage = (formData) => {
-        props.sendMessage(formData.newMessageBody)
+    let addNewMessage = (values) => {
+        props.sendMessage(values.newMessageBody)
     }
 
     if (!props.isAuth) return <Redirect to={'/login'} />
