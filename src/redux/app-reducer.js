@@ -1,4 +1,4 @@
-import getAuthUserData from "./auth-reducer"
+import {getAuthUserData} from "./auth-reducer"
 
 const INITIALIZED_SUCCESSFULLY = "INITIALIZED-SUCCESSFULLY"
 
@@ -23,9 +23,11 @@ export const initializedSuccessfully = () => ( { type: INITIALIZED_SUCCESSFULLY 
 
 export const initializeApp = () => {
     return (dispatch) => {
-        let dispatchResult = dispatch(getAuthUserData())
-        debugger
-        dispatch(initializedSuccessfully())
+        let promise = dispatch(getAuthUserData())
+        Promise.all([promise])
+            .then( () => {
+                dispatch(initializedSuccessfully())
+            })
     }
 }
 

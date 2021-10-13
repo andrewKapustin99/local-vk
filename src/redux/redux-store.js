@@ -1,4 +1,5 @@
 import { applyMiddleware, combineReducers, createStore } from "redux";
+import appReducer from "./app-reducer";
 import authReducer from "./auth-reducer";
 import dialogReducer from './dialogs-reducer'
 import profileReducer from './profile-reducer'
@@ -11,7 +12,8 @@ let reducers = combineReducers({
     messagesPage: dialogReducer,
     usersPage: usersReducer,
     auth: authReducer,
-    form: formReducer
+    form: formReducer,
+    app: appReducer
 });
 
 let store = createStore(reducers, applyMiddleware(thunkMiddleware) );

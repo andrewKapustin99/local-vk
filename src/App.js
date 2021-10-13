@@ -17,7 +17,7 @@ import { Route } from 'react-router-dom';
 import ProfileContainer from './componets/Profile/ProfileContainer';
 import HeaderContainer from './componets/Header/HeaderContainer';
 import Login from './componets/Login/Login';
-
+import Preloader from './componets/Common/Preloader/Preloader';
 
 
 // function App(props) {
@@ -57,6 +57,10 @@ class App extends React.Component {
     }
 
     render() {
+
+        if(!this.props.initialized) {
+            return <Preloader />
+        }
         return (
             <div className="app-wrapper ">
                 <HeaderContainer />
@@ -87,8 +91,12 @@ class App extends React.Component {
 }
 
 
+const mapStateToProps = (state) => ({
+    initialized: state.app.initialized
+})
+
 
 export default compose(
     withRouter,
-    connect(null, {initializeApp} )
+    connect(mapStateToProps, {initializeApp} )
 )(App)
