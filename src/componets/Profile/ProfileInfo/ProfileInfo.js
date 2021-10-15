@@ -6,6 +6,8 @@ import { NavLink } from "react-router-dom"
 import { faFacebookF } from '@fortawesome/free-brands-svg-icons' 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ProfileStaus from './ProfileStatus'
+import ProfileStatusWithHooks from './ProfileStatusWithHooks'
+
 
 const ProfileInfo = (props) => {
     
@@ -29,7 +31,8 @@ const ProfileInfo = (props) => {
                     <div className={classes.info_wrap}>
                         <div className={classes.infoItem}>
                             <h3>{props.profile.fullName}</h3>
-                            <ProfileStaus status={props.status} updateStatus={props.updateStatus} />
+                            {/* <ProfileStaus status={props.status} updateStatus={props.updateStatus} /> */}
+                            <ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus} />
                             {/* <span>{props.profile.aboutMe}</span> */}
                         </div>
 
