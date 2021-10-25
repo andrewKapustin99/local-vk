@@ -20,34 +20,9 @@ import Login from './componets/Login/Login';
 import Preloader from './componets/Common/Preloader/Preloader';
 
 
-// function App(props) {
-//     return (
-//             <div className="app-wrapper ">
-//                 <HeaderContainer />
-//                 <Navbar />
-//                 <div className="app-wrapper-contnent">
-
-//                     {/* Route - компонента которая следит за URL в браузере и в случае совпаденрия вызывает метот render */}
-//                     {/* path/:param_Name */}
-//                     <Route path="/profile/:userId?" 
-//                         render={() => <ProfileContainer />} 
-//                     />
-
-//                     <Route path="/dialogs" 
-//                         render={() => <DialogsContainer />} 
-//                     />
-
-//                     <Route path="/news" component={News} />
-//                     <Route path="/music" component={Music} />
-//                     <Route path="/settings" component={Settings} />
-//                     <Route path="/users" render={() => <UsersContainer/> } />
-
-//                     <Route path={'/login'} 
-//                         render={ () => <Login />  }/>
-//                 </div>
-//             </div>
-//     );
-// }
+import store from './redux/redux-store';
+import { Provider } from 'react-redux'
+import { BrowserRouter } from 'react-router-dom';
 
 
 class App extends React.Component {
@@ -58,7 +33,7 @@ class App extends React.Component {
 
     render() {
 
-        if(!this.props.initialized) {
+        if (!this.props.initialized) {
             return <Preloader />
         }
         return (
@@ -96,7 +71,16 @@ const mapStateToProps = (state) => ({
 })
 
 
-export default compose(
+let AppContainer = compose(
     withRouter,
-    connect(mapStateToProps, {initializeApp} )
+    connect(mapStateToProps, { initializeApp })
 )(App)
+
+const MainApp = (props) => {
+    return <BrowserRouter>
+        <Provider store={store} >
+            <AppContainer />
+        </Provider >
+    </BrowserRouter>
+}
+export default MainApp

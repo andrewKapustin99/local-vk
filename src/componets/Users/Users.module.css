@@ -67,6 +67,7 @@ button:disabled {
 }
 
 
-.selectedPage {
-    font-weight: bold;
+.paginator_wrap {
+    margin: 0 auto;
+    width: fit-content;
 }

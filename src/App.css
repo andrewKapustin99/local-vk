@@ -21,6 +21,7 @@
 }
 
 .app-wrapper-contnent {
+    position: relative;
     border-radius: 5px;
     grid-area: app-content;
     background-color: white;
