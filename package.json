@@ -2,6 +2,7 @@
   "name": "local-vk",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://andrewkapustin99.github.io/social-network",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
     "@fortawesome/free-brands-svg-icons": "^5.15.4",
@@ -27,7 +28,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -50,5 +53,8 @@
   "main": "index.js",
   "repository": "https://gitlab.com/andrew_kapustin/local-vk.git",
   "author": "Andrew Kapustin <7280567-andrew_kapustin@users.noreply.gitlab.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "gh-pages": "^3.2.3"
+  }
 }

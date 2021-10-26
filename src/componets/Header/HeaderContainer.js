@@ -7,14 +7,12 @@ import { compose } from "redux";
 
 class HeaderContainer extends React.Component {
     render() {
-        console.log(this.props);
         return <Header {...this.props} />
     }
 }
 // ____________________________________________________________________________________________________________
 
 let mapStateToProps = (state) => {
-    console.log(state);
     return {
         isAuth: state.auth.isAuth,
         login: state.auth.login,
